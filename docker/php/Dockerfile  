@@ -1,0 +1,10 @@
+FROM php:8.1-apache
+RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN a2enmod rewrite
+
+# Меняем DocumentRoot на папку pub
+RUN sed -ri 's!/var/www/html!/var/www/html/pub!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri 's!/var/www/html!/var/www/html/pub!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Копируем ваш код
+COPY . /var/www/html/
