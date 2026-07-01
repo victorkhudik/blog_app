@@ -25,7 +25,7 @@ class View
     {
         $this->initSmarty();
         $this->data['base_url'] = $_ENV['BASE_URL'] ?? '/';
-        $this->data['site_name'] = $_ENV['SITE_NAME'] ?? 'Blog';
+        $this->data['site_name'] = $_ENV['SITE_NAME'] ?? 'Blog Application';
     }
 
     /**

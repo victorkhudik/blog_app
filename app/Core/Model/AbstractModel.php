@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Core\Model;
+
 use App\Core\Model\Database;
 class AbstractModel
 {
+    const PRIMARY_KEY = 'id';
 
     /**
      * @var Database|null
@@ -15,10 +17,6 @@ class AbstractModel
      */
     protected string $_table = '';
 
-    /**
-     * @var string
-     */
-    protected string $_primaryKey = 'id';
 
     /**
      * @var array
@@ -55,8 +53,6 @@ class AbstractModel
         $this->db = Database::getInstance();
     }
 
-
-
     /**
      * @param array|string $key
      * @param $value
@@ -84,7 +80,7 @@ class AbstractModel
      */
     public function setPrimaryKey($value): AbstractModel
     {
-        return $this->setData($this->_primaryKey, $value);
+        return $this->setData(self::PRIMARY_KEY, $value);
     }
 
     /**
@@ -127,7 +123,7 @@ class AbstractModel
      */
     public function getPrimaryKey(): ?int
     {
-        return $this->getData($this->_primaryKey)?:0;
+        return $this->getData(self::PRIMARY_KEY)?:0;
     }
 
     /**
@@ -179,7 +175,7 @@ class AbstractModel
                 $this->db->update(
                     $this->_table,
                     $filteredData,
-                    "{$this->_primaryKey} = ?",
+                    self::PRIMARY_KEY . ' = ?',
                     [$this->getPrimaryKey()]
                 );
             }
@@ -199,7 +195,7 @@ class AbstractModel
         try {
             $this->db->delete(
                 $this->_table,
-                "{$this->_primaryKey} = ?",
+                self::PRIMARY_KEY . ' = ?',
                 [$this->getPrimaryKey()]);
         } catch (\PDOException $e) {
             throw new \Exception("Failed to save {$this->table}: " . $e->getMessage());

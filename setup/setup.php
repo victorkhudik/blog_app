@@ -110,22 +110,18 @@ class Setup
         try {
             echo "\nCreating tables...\n\n";
 
-            foreach ($this->migrations as $sql) {
-                $this->db->execute($sql);
-                echo "\033[32m✓ Table created successfully\033[0m\n";
-            }
+            $imageFolders = [
+                    'pub/media/images/posts',
+                    'var/cache',
+                    'var/templates_c'
+            ];
 
-            $tables = $this->db->fetchAll("SHOW TABLES");
-            echo "\n\033[36mCreated tables:\033[0m\n";
-            foreach ($tables as $row) {
-                $tableName = reset($row);
-                echo "  - {$tableName}\n";
-            }
-
-            $imageFolderPath = __DIR__ . '/../pub/media/images/posts';
-
-            if (!is_dir($imageFolderPath) && mkdir($imageFolderPath, 0777, true)) {
-                echo "\n\033[32m✔ Directory for media files created!\033[0m\n";
+            foreach ($imageFolders as $folder) {
+                $folderPath =  __DIR__ . '/../'. $folder;
+                if (!is_dir($folderPath) && mkdir($folderPath, 0777, true)) {
+                    chmod($folderPath, 0777);
+                    echo "\n\033[32m✔ Directory " . $folder . " created!\033[0m\n";
+                }
             }
 
             $this->lock();
