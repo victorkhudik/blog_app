@@ -3,17 +3,17 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router>
         <route id="home">
-            <alias value="/" />
+            <alias value="" />
             <controller value="App\Blog\Controller\Category\CategoryList" />
             <method value="GET" />
         </route>
         <route id="category">
-            <alias value="category" />
+            <alias value="category/{alias}" />
             <controller value="App\Blog\Controller\Category\View" />
             <method value="GET" />
         </route>
         <route id="post">
-            <alias value="post" />
+            <alias value="post/{alias}" />
             <method value="GET" />
             <controller value="App\Blog\Controller\Post\View" />
         </route>

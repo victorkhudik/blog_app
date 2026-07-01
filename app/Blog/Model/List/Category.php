@@ -62,4 +62,22 @@ class Category extends AbstractModel
 
         return $result;
     }
+
+    /**
+     * @param string $alias
+     * @return CategoryModel|null
+     */
+    public function findByAlias(string $alias): ?CategoryModel
+    {
+        $data = $this->db->selectOne(
+            $this->_table,
+            CategoryModel::ALIAS . ' = ?',
+            [$alias]
+        );
+
+        $category = new CategoryModel();
+        $category->setData($data);
+
+        return $category;
+    }
 }

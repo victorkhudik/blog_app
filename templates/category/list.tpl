@@ -20,7 +20,7 @@
                             <article class="post-card">
                                 {if $post.list_image}
                                     <div class="post-card-image">
-                                        <img src="{$post.list_image}" alt="{$post.title}" loading="lazy" width="400"
+                                        <img src="{$base_url}{$post.list_image}" alt="{$post.title}" loading="lazy" width="400"
                                              height="200" />
                                     </div>
                                 {/if}

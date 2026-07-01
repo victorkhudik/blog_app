@@ -13,13 +13,18 @@ class CategoryList extends AbstractController
     protected Category $categoryList;
 
     protected string $template = 'category/list.tpl';
+
     public function __construct()
     {
         parent::__construct();
         $this->categoryList = new Category();
     }
 
-    public function execute(): void
+    /**
+     * @param ...$params
+     * @return void
+     */
+    public function execute(...$params): void
     {
         $this->view->display($this->template, [
             'categories' => $this->categoryList->getCategoriesWithRecentPosts(),

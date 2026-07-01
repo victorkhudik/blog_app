@@ -99,6 +99,17 @@ class Database
     }
 
     /**
+     * @param string $table
+     * @param string $where
+     * @param array $params
+     * @return array|null
+     */
+    public function selectWhereAll(string $table, string $where, array $params = []): ?array
+    {
+        return $this->runQuery("SELECT * FROM {$table} WHERE {$where}", $params)->fetchAll();
+    }
+
+    /**
      * @param string $sql
      * @param array $params
      * @return mixed
@@ -106,6 +117,17 @@ class Database
     public function fetchOne(string $sql, array $params = []): mixed
     {
         return $this->runQuery($sql, $params)->fetch();
+    }
+
+    /**
+     * @param string $table
+     * @param string $where
+     * @param array $params
+     * @return array|null
+     */
+    public function selectOne(string $table, string $where, array $params = []): ?array
+    {
+        return $this->runQuery("SELECT * FROM {$table} WHERE {$where}", $params)->fetch();
     }
 
     /**

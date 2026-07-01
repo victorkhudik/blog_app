@@ -82,7 +82,7 @@ class Router
             foreach ($router->route as $route) {
                $this->addRoute(
                    (string)$route->method['value'],
-                   (string)$route->alias['value'],
+                   '/' . (string)$route->alias['value'],
                    (string)$route->controller['value']);
             }
         }

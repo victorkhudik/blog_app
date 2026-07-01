@@ -23,8 +23,7 @@ abstract class AbstractController
         $this->view = new View();
     }
 
-    abstract public function execute(): void;
-
+    abstract public function execute(...$params): void;
 
     /**
      * @param string $key
