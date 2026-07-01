@@ -19,8 +19,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: blog_app
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: P@ssw0rd!
     ports:
       - "3307:3306"
     volumes:

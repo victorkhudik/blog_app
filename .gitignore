@@ -4,3 +4,5 @@ composer.lock
 .idea/
 *.iml
 docker-compose.override.yml
+setup/.installed
+pub
