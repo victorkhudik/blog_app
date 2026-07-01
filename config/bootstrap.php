@@ -30,3 +30,5 @@ class ConfigLoader
         }
     }
 }
+
+ConfigLoader::loadEnv(__DIR__ . '/../.env');

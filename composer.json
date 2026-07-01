@@ -1,6 +1,6 @@
 {
   "require": {
-    "smarty/smarty": "^5.0",
+    "smarty/smarty": "^5.8",
     "vlucas/phpdotenv": "^5.5",
     "ezyang/htmlpurifier": "^4.19",
     "fakerphp/faker": "^1.23",

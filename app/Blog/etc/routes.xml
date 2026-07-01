@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router>
+        <route id="home">
+            <alias value="/" />
+            <controller value="App\Blog\Controller\Category\CategoryList" />
+            <method value="GET" />
+        </route>
+        <route id="category">
+            <alias value="category" />
+            <controller value="App\Blog\Controller\Category\View" />
+            <method value="GET" />
+        </route>
+        <route id="post">
+            <alias value="post" />
+            <method value="GET" />
+            <controller value="App\Blog\Controller\Post\View" />
+        </route>
+    </router>
+</config>
